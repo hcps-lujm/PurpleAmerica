@@ -12,10 +12,10 @@ Every four years the time comes for America to pick a new president (or choose t
 Grading
 	This project will be graded using two components, an individual component and a group component.  These will both be worth 50% of the final project grade.  The grade will be determined using the following criteria:
 -	Group Component
-	o	Project Builds Successfully and performs all basic required functions------------ 25 pts
-	o	Comment Score ------------------------------------------------------------------- 15 pts
-	o	Active Group participation in GitHub Organiztion -------------------------------- 10 pts
+	-	Project Builds Successfully and performs all basic required functions------------ 25 pts
+	-	Comment Score ------------------------------------------------------------------- 15 pts
+	-	Active Group participation in GitHub Organiztion -------------------------------- 10 pts
 -	Individual Component 
-	o	3 Unique and Valuable Pull requests submitted ----------------------------------- 15 pts
-	o	Commit Notes and Change logs are clear and valuable ----------------------------- 10 pts
-	o	Added Component was approved, works, and adds value to project ------------------ 25 pts
+	-	3 Unique and Valuable Pull requests submitted ----------------------------------- 15 pts
+	-	Commit Notes and Change logs are clear and valuable ----------------------------- 10 pts
+	-	Added Component was approved, works, and adds value to project ------------------ 25 pts
