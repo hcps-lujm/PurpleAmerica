@@ -23,7 +23,7 @@ public class PoliticalMap {
     public static void main(String[] args) throws Exception{
         Draw d = new Draw("Purple America");
         d.setCanvasSize(1000, 500);
-        File f = new File("C:\\Users\\hcps-walterspa\\Documents\\NetBeansProjects\\PurpleAmerica\\src\\data\\USA.txt");
+        File f = new File("C:\\Users\\hcps-walterspa\\Documents\\NetBeansProjects\\PurpleAmerica\\src\\data\\USA-county.txt");
         Scanner scan = new Scanner(f);
         double[] bounds = new double[4];
         bounds[0] = scan.nextDouble();
