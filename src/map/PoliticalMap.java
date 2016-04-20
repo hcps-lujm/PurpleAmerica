@@ -22,9 +22,8 @@ import java.util.*;
 public class PoliticalMap {
     public static void main(String[] args) throws Exception{
         Draw d = new Draw("Purple America");
-        d.setPenColor(Draw.ORANGE);
         d.setCanvasSize(1000, 500);
-        File f = new File("C:\\Users\\hcps-walterspa\\Documents\\NetBeansProjects\\PurpleAmerica\\src\\data\\AR.txt");
+        File f = new File("C:\\Users\\hcps-walterspa\\Documents\\NetBeansProjects\\PurpleAmerica\\src\\data\\USA.txt");
         Scanner scan = new Scanner(f);
         double[] bounds = new double[4];
         bounds[0] = scan.nextDouble();
@@ -33,6 +32,7 @@ public class PoliticalMap {
         bounds[3] = scan.nextDouble();
         d.setXscale(bounds[0], bounds[1]);
         d.setYscale(bounds[2], bounds[3]);
+        d.setPenColor(Draw.BLUE);
         int times = scan.nextInt();
         for (int i = 0; i < times; i++) {
             scan.nextLine();
