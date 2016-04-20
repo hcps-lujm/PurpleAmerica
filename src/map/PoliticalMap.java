@@ -32,7 +32,6 @@ public class PoliticalMap {
         bounds[3] = scan.nextDouble();
         d.setXscale(bounds[0], bounds[1]);
         d.setYscale(bounds[2], bounds[3]);
-        d.setPenColor(Draw.BLUE);
         int times = scan.nextInt();
         for (int i = 0; i < times; i++) {
             scan.nextLine();
@@ -46,7 +45,10 @@ public class PoliticalMap {
                 x[j] = scan.nextDouble();
                 y[j] = scan.nextDouble();
             }
+            d.setPenColor(Draw.BLUE);
             d.filledPolygon(x, y);
+            d.setPenColor(Draw.WHITE);
+            d.polygon(x, y);
         }
     }
 }
