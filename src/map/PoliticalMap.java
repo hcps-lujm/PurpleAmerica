@@ -15,6 +15,7 @@ import edu.princeton.cs.introcs.*;
 import java.io.*;
 import java.util.*;
 
+
 /**
  *
  * @author 
@@ -22,14 +23,18 @@ import java.util.*;
 public class PoliticalMap {
     public static void main(String[] args) throws Exception{
         Draw d = new Draw("Purple America");
-        d.setCanvasSize(1000, 500);
-        File f = new File("C:\\Users\\hcps-walterspa\\Documents\\NetBeansProjects\\PurpleAmerica\\src\\data\\USA-county.txt");
+        File f = new File("C:\\Users\\hcps-lujm\\Documents\\School 2015-2016\\7. Programming\\MP4\\PurpleAmerica\\PurpleAmerica\\src\\data\\USA.txt");
         Scanner scan = new Scanner(f);
         double[] bounds = new double[4];
         bounds[0] = scan.nextDouble();
         bounds[2] = scan.nextDouble();
         bounds[1] = scan.nextDouble();
         bounds[3] = scan.nextDouble();
+        
+        double xVal = Math.abs((bounds[0]-bounds[1])/(bounds[2]-bounds[3]));
+        d.setCanvasSize((int) (xVal*500), 500);
+
+        
         d.setXscale(bounds[0], bounds[1]);
         d.setYscale(bounds[2], bounds[3]);
         int times = scan.nextInt();
@@ -47,7 +52,7 @@ public class PoliticalMap {
             }
             d.setPenColor(Draw.BLUE);
             d.filledPolygon(x, y);
-            d.setPenColor(Draw.WHITE);
+            d.setPenColor(Draw.BLACK);
             d.polygon(x, y);
         }
     }
