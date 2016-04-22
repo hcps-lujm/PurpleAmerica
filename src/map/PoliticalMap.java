@@ -31,6 +31,10 @@ public class PoliticalMap {
         bounds[2] = scan.nextDouble();
         bounds[1] = scan.nextDouble();
         bounds[3] = scan.nextDouble();
+        
+        double xVal = Math.abs((bounds[0]-bounds[1])/(bounds[2]-bounds[3]));
+        d.setCanvasSize((int) (xVal*500), 500);
+        
         d.setXscale(bounds[0], bounds[1]);
         d.setYscale(bounds[2], bounds[3]);
         int times = scan.nextInt();
