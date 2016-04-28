@@ -44,6 +44,7 @@ public class PoliticalMap {
             scan.nextLine(); // skipping unimportant stuff
             scan.nextLine();
             String county = scan.nextLine();
+            county = county.replace(" city", "");
             scan.nextLine();
             int numPoints = scan.nextInt(); // number of points in the polygon
             double[] x = new double[numPoints];
@@ -54,22 +55,13 @@ public class PoliticalMap {
             }
             // Getting the color for each county
             // If the database doesn't have the 
-            Color c;
-            try{
-                c = colors.get(county);
-            }
-            catch(Exception e){
-                c = Draw.BLACK;
-            }
+            Color c = colors.get(county);
             
             d.setPenColor(c); // fill area coloring
             d.filledPolygon(x, y);
             d.setPenColor(Draw.BLACK); // border drawing
             d.polygon(x, y);
-        }
-        
-        
-        
+        }        
     }
     
     static HashMap<String, Color> colors(String f) throws FileNotFoundException{
