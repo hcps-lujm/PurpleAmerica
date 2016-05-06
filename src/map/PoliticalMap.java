@@ -32,7 +32,7 @@ public class PoliticalMap {
         bounds[1] = scan.nextDouble();
         bounds[3] = scan.nextDouble();
         double r = 0.000001;//\\
-        
+        //
         double xVal = Math.abs((bounds[0]-bounds[1])/(bounds[2]-bounds[3])); // Setting the Y so it is always 500 and dynamically scaling the X
         d.setCanvasSize((int) (xVal*500), 500);
         d.setLocationOnScreen(600, 600);//\\
