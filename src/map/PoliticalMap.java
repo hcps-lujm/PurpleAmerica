@@ -23,7 +23,7 @@ import java.util.*;
 public class PoliticalMap {
     public static void main(String[] args) throws Exception{
         Draw d = new Draw("Purple America");
-        String place = "VA";
+        String place = "USA-county";
         File f = new File("src\\data\\" + place + ".txt");
         Scanner scan = new Scanner(f); //takes data from the USA-country.txt doc
         double[] bounds = new double[4]; // getting bounds for max/min lat/long
@@ -84,5 +84,56 @@ public class PoliticalMap {
             colors.put(values[0], new Color(rgbRep, rgbInd, rgbDem)); //combine the colors for rgb
         }
         return colors;
+    }
+     
+    //This method is supposed to draw out Hawaii since it isnt drawn to scale on the other method
+    public void Hawaii(){
+        Draw h = new Draw("Hawaii");
+        double[] x= new double[1];
+        double[] y= new double[1];
+        int r=1;
+        int t=2;
+        Scanner scan = new Scanner("HI.txt"); //takes data from the USA-country.txt doc
+        for(int e=0; e<1000; e++){
+            x[e] = scan.nextDouble();
+            y[e] = scan.nextDouble();
+        }
+        for(int v=0; v<20; v++){
+            r++;
+            t++;
+        }
+        h.setPenColor(Draw.RED); // fill area coloring
+        h.filledPolygon(x,y);
+        h.setPenColor(Draw.BLACK); // border drawing
+        h.polygon(x, y);
+        
+        h.picture(r, t, null);
+        h.hasNextKeyTyped();
+        h.setCanvasSize(1000, 1000);
+    }
+    //this method is to resize alaska
+    public void Alaska(){
+        Draw a = new Draw("alaska");
+        double[] x= new double[1];
+        double[] y= new double[1];
+        int r=1;
+        int t=2;
+        Scanner scan = new Scanner("AL.txt"); //takes data from the USA-country.txt doc
+        for(int e=0; e<1000; e++){
+            x[e] = scan.nextDouble();
+            y[e] = scan.nextDouble();
+        }
+        for(int v=0; v<20; v++){
+            r++;
+            t++;
+        }
+        a.setPenColor(Draw.RED); // fill area coloring
+        a.filledPolygon(x,y);
+        a.setPenColor(Draw.BLACK); // border drawing
+        a.polygon(x, y);
+        
+        a.picture(r, t, null);
+        a.hasNextKeyTyped();
+       
     }
 }
