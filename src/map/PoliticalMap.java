@@ -23,7 +23,7 @@ import java.util.*;
 public class PoliticalMap {
     public static void main(String[] args) throws Exception{
         Draw d = new Draw("Purple America");
-        String place = "VA";
+        String place = "USA-county";
         File f = new File("src\\data\\" + place + ".txt");
         Scanner scan = new Scanner(f); //takes data from the USA-country.txt doc
         double[] bounds = new double[4]; // getting bounds for max/min lat/long
@@ -37,7 +37,7 @@ public class PoliticalMap {
         d.setXscale(bounds[0], bounds[1]);
         d.setYscale(bounds[2], bounds[3]);
         
-        HashMap<String, Color> colors = colors(place); // Getting all the colors for the map
+        
         
         int times = scan.nextInt(); // number of counties/states
         for (int i = 0; i < times; i++) {
@@ -45,7 +45,9 @@ public class PoliticalMap {
             scan.nextLine();
             String county = scan.nextLine();
             county = county.replace(" city", "");
-            scan.nextLine();
+            county = county.replace(" Parish", "");
+            
+            String states= scan.nextLine();
             int numPoints = scan.nextInt(); // number of points in the polygon
             double[] x = new double[numPoints];
             double[] y = new double[numPoints];
@@ -55,6 +57,7 @@ public class PoliticalMap {
             }
             // Getting the color for each county
             // If the database doesn't have the 
+            HashMap<String, Color> colors = colors(states); // Getting all the colors for the map
             Color c = colors.get(county);
             
             d.setPenColor(c); // fill area coloring
@@ -64,8 +67,10 @@ public class PoliticalMap {
         }        
     }
     
-    static HashMap<String, Color> colors(String f) throws FileNotFoundException{
-        File AK= new File("src\\data\\" + f + "2012.txt");
+    static HashMap<String, Color> colors(String county) throws FileNotFoundException{
+        
+        
+        File AK= new File("src\\data\\" + county + "2012.txt");
         Scanner scanAK = new Scanner(AK); 
         scanAK.nextLine();  //this is used to get rid of the first line which just has the president names and other parties
         HashMap<String, Color> colors = new HashMap(); //this array list inserts all the color values which are the the colors for each party
@@ -84,5 +89,6 @@ public class PoliticalMap {
             colors.put(values[0], new Color(rgbRep, rgbInd, rgbDem)); //combine the colors for rgb
         }
         return colors;
-    }
+        }
+    
 }
