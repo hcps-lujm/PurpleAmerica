@@ -18,7 +18,6 @@ public class PurpAm {
 
     public PurpAm(String place, int date) throws Exception {
         Draw d = new Draw("Purple America");
-        place = "USA";
         File f = new File("src\\data\\" + place + ".txt");
         Scanner scan = new Scanner(f); //takes data from the USA-country.txt doc
         double[] bounds = new double[4]; // getting bounds for max/min lat/long
@@ -34,14 +33,16 @@ public class PurpAm {
 
         //EXTRA FUNCTIONALITY
         //d.text();
-        HashMap<String, Color> colors = colors(place, 2000); // Getting all the colors for the map
 
         int times = scan.nextInt(); // number of counties/states
         for (int i = 0; i < times; i++) {
             scan.nextLine(); // skipping unimportant stuff
             scan.nextLine();
             String county = scan.nextLine();
-            scan.nextLine();
+            county = county.replace(" city", "");
+            county = county.replace(" Parish", "");
+            
+            String states = scan.nextLine();
             int numPoints = scan.nextInt(); // number of points in the polygon
             double[] x = new double[numPoints];
             double[] y = new double[numPoints];
@@ -51,13 +52,9 @@ public class PurpAm {
             }
             // Getting the color for each county
             // If the database doesn't have the 
-            Color c;
-            try {
-                c = colors.get(county);
-            } catch (Exception e) {
-                c = Draw.BLACK;
-            }
-
+            HashMap<String, Color> colors = colors(states, date); // Getting all the colors for the map
+            Color c = colors.get(county);
+            
             d.setPenColor(c); // fill area coloring
             d.filledPolygon(x, y);
             d.setPenColor(Draw.BLACK); // border drawing
