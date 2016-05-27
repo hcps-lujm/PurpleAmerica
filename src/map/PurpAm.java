@@ -1,7 +1,15 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Names: Jessica Lu, Peyton Walters, Kevin Duong
+ * Block 7
+ *
+ * PurpAm Method: This method scans in a designated file which containts
+ * the coordinates of the area. It uses those points and draws in onto a 
+ * dynamically sized jFrame. It also colors in the area of a map
+ *
+ * Hashmap Method: This method is used to create a colored version of the desired 
+ * area. Using hashmaps and a designated file, the program reads in the color
+ * values in the file and uses the formulas given to create an RGB color
+ * representation onto the jFrame, thus showing the political heat of an area.
  */
 
 package map;
@@ -17,6 +25,15 @@ import java.util.*;
  * @author hcps-lujm
  */
 public class PurpAm{
+
+    /**
+     * Uses a read in file to scale a jFrame and plot the given coordinates
+     * onto the screen to display an image of the desired area
+     * 
+     * @param place
+     * @param date
+     * @throws Exception
+     */
     public PurpAm(String place, int date) throws Exception{
         Draw d = new Draw("Purple America");
         place = "USA";
@@ -38,6 +55,7 @@ public class PurpAm{
         HashMap<String, Color> colors = colors(place, 2000); // Getting all the colors for the map
         
         int times = scan.nextInt(); // number of counties/states
+        ArrayList<String> states = new ArrayList<>();
         for (int i = 0; i < times; i++) {
             scan.nextLine(); // skipping unimportant stuff
             scan.nextLine();
@@ -49,6 +67,7 @@ public class PurpAm{
             for (int j = 0; j < numPoints; j++) { // getting all the points and putting them in the array
                 x[j] = scan.nextDouble();
                 y[j] = scan.nextDouble();
+                
             }
             // Getting the color for each county
             // If the database doesn't have the 
@@ -64,9 +83,34 @@ public class PurpAm{
             d.filledPolygon(x, y);
             d.setPenColor(Draw.BLACK); // border drawing
             d.polygon(x, y);
+            
+            if(!states.contains(county)){
+                double sum = 0;
+                
+                for(int k = 0; k < numPoints; k++){
+                    sum = sum + x[k];
+                }
+                double averagex = sum / x.length;
+                
+                sum = 0;
+                for(int m = 0; m < numPoints; m++){
+                    sum = sum + y[m];
+                }
+                double averagey =  sum / y.length;
+                d.text(averagex, averagey, county);
+
+            }
+            states.add(county);
         }
         
+        
     }
+    
+    /*public static void WriteStateName(Draw d, int averagex, int averagey, String county){
+            d.setPenColor(Draw.BLACK);
+            d.text(averagex, averagey, county);
+
+    }*/
     
     static HashMap<String, Color> colors(String f, int d) throws FileNotFoundException{
         int date = d;
