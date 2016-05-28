@@ -84,21 +84,128 @@ public class PurpAm{
             d.setPenColor(Draw.BLACK); // border drawing
             d.polygon(x, y);
             
+            //Extra Functionality
+            //Writes the name of the states
             if(!states.contains(county)){
-                double sum = 0;
-                
-                for(int k = 0; k < numPoints; k++){
+                double sum = 0;               
+                for(int k = 0; k < numPoints; k++){//finds average of the x coordinates
                     sum = sum + x[k];
                 }
-                double averagex = sum / x.length;
-                
+                double averagex = sum / x.length;               
                 sum = 0;
-                for(int m = 0; m < numPoints; m++){
+                for(int m = 0; m < numPoints; m++){//finds average of the y coordinates
                     sum = sum + y[m];
                 }
                 double averagey =  sum / y.length;
-                d.text(averagex, averagey, county);
-
+               
+                //Manually adjusted "centers" of the state based off of the average
+                //coordinate found above
+                if(county.equals("Virginia")){
+                    d.text(averagex += 1.5, averagey, county);
+                }
+                if(county.equals("Kentucky")){
+                    d.text(averagex += 0.75, averagey, county);
+                }  
+                if(county.equals("New Hampshire")){
+                    d.text(averagex += 3, averagey -= 1, county);
+                } 
+                if(county.equals("North Dakota")){
+                    d.text(averagex -= 3, averagey, county);
+                } 
+                if(county.equals("South Dakota")){
+                    d.text(averagex -= 3, averagey += 1, county);
+                } 
+                if(county.equals("Nebraska")){
+                    d.text(averagex -= 3, averagey, county);
+                }  
+                if(county.equals("Kansas")){
+                    d.text(averagex -= 3, averagey -= 1, county);
+                }
+                if(county.equals("Oklahoma")){
+                    d.text(averagex, averagey += 2, county);
+                }
+                if(county.equals("Texas")){
+                    d.text(averagex, averagey += 2, county);
+                }
+                if(county.equals("New Mexico")){
+                    d.text(averagex, averagey += 1, county);
+                }
+                if(county.equals("Montana")){
+                    d.text(averagex += 3, averagey += 1, county);
+                }    
+                if(county.equals("Idaho")){
+                    d.text(averagex, averagey -= 2, county);
+                }
+                if(county.equals("Oregon")){
+                    d.text(averagex, averagey -= 1, county);
+                }
+                if(county.equals("Nevada")){
+                    d.text(averagex -= 2, averagey += 3, county);
+                }
+                if(county.equals("Arizona")){
+                    d.text(averagex += 2, averagey, county);
+                }
+                if(county.equals("Missouri")){
+                    d.text(averagex -= 1, averagey, county);
+                }
+                if(county.equals("Arkansas")){
+                    d.text(averagex -= 1, averagey, county);
+                }
+                if(county.equals("Mississippi")){
+                    d.text(averagex += 1, averagey, county);
+                }
+                if(county.equals("Georgia")){
+                    d.text(averagex -= 1, averagey, county);
+                }
+                if(county.equals("Florida")){
+                    d.text(averagex -= 1, averagey, county);
+                }
+                if(county.equals("South Carolina")){
+                    d.text(averagex += 2, averagey, county);
+                }
+                if(county.equals("North Carolina")){
+                    d.text(averagex += 1, averagey, county);
+                } 
+                if(county.equals("Illinois")){
+                    d.text(averagex, averagey += 2, county);
+                }
+                if(county.equals("Indiana")){
+                    d.text(averagex += 1, averagey += 2, county);
+                }
+                if(county.equals("Pennsylvania")){
+                    d.text(averagex -= 2, averagey, county);
+                }
+                if(county.equals("Maryland")){
+                    d.text(averagex += 3, averagey -= 1, county);
+                }
+                if(county.equals("New Jersey")){
+                    d.text(averagex += 3, averagey, county);
+                }
+                if(county.equals("Massachusetts")){
+                    d.text(averagex += 1, averagey += 0.5, county);
+                }  
+                if(county.equals("Connecticut")){
+                    d.text(averagex += 3, averagey -= 0.5, county);
+                }       
+                if(county.equals("Delaware")){
+                    d.text(averagex += 4, averagey, county);
+                }  
+                if(county.equals("Michigan")){
+                    d.text(averagex += 4, averagey -= 1, county);
+                }
+                if(county.equals("Washington")){
+                    d.text(averagex += 3, averagey -= 3, county);
+                } 
+                if(county.equals("Wisconsin")){
+                    d.text(averagex, averagey -= 2, county);
+                }                   
+                if(county.equals("District of Columbia")){
+                    d.text(0, 0, "");
+                }               
+                else{
+                    d.text(averagex, averagey, county);
+                }
+                //WriteStateName(d, averagex, averagey, county);
             }
             states.add(county);
         }
@@ -106,8 +213,11 @@ public class PurpAm{
         
     }
     
-    /*public static void WriteStateName(Draw d, int averagex, int averagey, String county){
-            d.setPenColor(Draw.BLACK);
+    /*public static void WriteStateName(Draw d, double averagex, double averagey, String county){
+        d.setPenColor(Draw.BLACK);
+        if(county.equals("Washington")){
+                    d.text(averagex += 2, averagey -= 2, county);
+        }
             d.text(averagex, averagey, county);
 
     }*/
